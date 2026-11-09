@@ -1,900 +1,2134 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>GRUPOAGROFUTURO| Produção e venda agrícola</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description"
-    content="AGRONEGÓCIO: produção e venda de produtos agrícolas frescos.">
+<title>AGROFUTURO | Produção, produtos e bebidas agrícolas</title>
 
-  <style>
+<meta name="description" content="A AGROFUTURO é um projeto dedicado à produção, comercialização e divulgação de produtos agrícolas, incluindo a transformação de frutas em sumos e batidos naturais.">
 
-    :root {
-      --green: #176b3a;
-      --dark: #123d27;
-      --light: #f2f8f1;
-      --gold: #f2c14e;
-      --white: #ffffff;
+<style>
+
+/* =========================
+   CONFIGURAÇÕES
+========================= */
+
+:root {
+    --verde: #168a45;
+    --verde-escuro: #075b2c;
+    --verde-claro: #e9f8ee;
+    --dourado: #f2b705;
+    --branco: #ffffff;
+    --escuro: #10251a;
+    --cinza: #66736b;
+
+    --sombra: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5faf6;
+    color: var(--escuro);
+    overflow-x: hidden;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px 7%;
+
+    background: rgba(255,255,255,0.95);
+
+    backdrop-filter: blur(12px);
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+
+    animation: aparecerTopo 0.8s ease;
+}
+
+.logo {
+    font-size: 1.7rem;
+    font-weight: bold;
+
+    color: var(--verde-escuro);
+
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--dourado);
+}
+
+nav {
+    display: flex;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+}
+
+nav a {
+    text-decoration: none;
+
+    color: var(--escuro);
+
+    font-weight: bold;
+
+    position: relative;
+
+    transition: 0.3s;
+}
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -7px;
+
+    width: 0;
+
+    height: 3px;
+
+    background: var(--verde);
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--verde);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 90vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(0,70,35,0.65),
+            rgba(0,40,20,0.78)
+        ),
+
+        url("https://images.pexels.com/photos/2135677/pexels-photo-2135677.jpeg?auto=compress&cs=tinysrgb&w=1600");
+
+    background-size: cover;
+
+    background-position: center;
+
+    color: white;
+}
+
+.hero::before,
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+
+    height: 230px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.08);
+
+    animation: flutuar 6s ease-in-out infinite;
+}
+
+.hero::before {
+    top: 10%;
+    left: 5%;
+}
+
+.hero::after {
+    bottom: 5%;
+    right: 5%;
+
+    animation-delay: 2s;
+}
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 850px;
+
+    animation: aparecerHero 1.2s ease;
+}
+
+.hero h1 {
+
+    font-size: clamp(3rem, 8vw, 6rem);
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 8px 30px rgba(0,0,0,0.4);
+
+    animation: tituloEntrada 1.3s ease;
+}
+
+.hero h1 span {
+    color: var(--dourado);
+}
+
+.hero p {
+
+    font-size: 1.25rem;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+
+    animation: subir 1.5s ease;
+}
+
+.botao {
+
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    background: var(--dourado);
+
+    color: #1d1d1d;
+
+    text-decoration: none;
+
+    border-radius: 50px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.25);
+
+    transition: 0.35s;
+
+    animation: subir 1.8s ease;
+}
+
+.botao:hover {
+
+    transform:
+        translateY(-6px)
+        scale(1.05);
+
+    box-shadow:
+        0 15px 35px
+        rgba(242,183,5,0.45);
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+
+section {
+    padding: 90px 7%;
+}
+
+.titulo-secao {
+
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+.titulo-secao h2 {
+
+    font-size: 2.5rem;
+
+    color: var(--verde-escuro);
+
+    margin-bottom: 12px;
+}
+
+.titulo-secao p {
+
+    color: var(--cinza);
+
+    max-width: 750px;
+
+    margin: auto;
+
+    line-height: 1.7;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 25px;
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.card {
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: var(--sombra);
+
+    text-align: center;
+
+    transition:
+        transform 0.4s,
+        box-shadow 0.4s;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -100%;
+
+    width: 100%;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--verde),
+            var(--dourado)
+        );
+
+    transition: 0.5s;
+}
+
+.card:hover::before {
+    left: 0;
+}
+
+.card:hover {
+
+    transform:
+        translateY(-12px)
+        scale(1.02);
+
+    box-shadow:
+        0 25px 50px
+        rgba(0,0,0,0.16);
+}
+
+.icone {
+
+    font-size: 3rem;
+
+    margin-bottom: 15px;
+
+    display: inline-block;
+
+    animation:
+        balanco 3s
+        ease-in-out
+        infinite;
+}
+
+.card h3 {
+
+    color: var(--verde-escuro);
+
+    margin-bottom: 12px;
+}
+
+.card p {
+
+    color: var(--cinza);
+
+    line-height: 1.7;
+}
+
+/* =========================
+   PRODUTOS
+========================= */
+
+.produtos {
+
+    background:
+        var(--verde-claro);
+}
+
+.produtos-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+}
+
+.produto {
+
+    background: white;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow: var(--sombra);
+
+    transition: 0.4s;
+
+    opacity: 0;
+
+    transform: translateY(50px);
+}
+
+.produto.mostrar {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.produto:hover {
+
+    transform:
+        translateY(-12px);
+
+    box-shadow:
+        0 25px 50px
+        rgba(0,0,0,0.18);
+}
+
+.produto-img {
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.6s ease;
+}
+
+.produto:hover .produto-img {
+
+    transform:
+        scale(1.12);
+}
+
+.produto-info {
+
+    padding: 20px;
+}
+
+.produto-info h3 {
+
+    color: var(--verde-escuro);
+
+    margin-bottom: 8px;
+}
+
+.produto-info p {
+
+    color: var(--cinza);
+
+    line-height: 1.6;
+}
+
+/* =========================
+   SUMOS E BATIDOS
+========================= */
+
+.bebidas {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf0,
+            #eefaf2
+        );
+}
+
+.bebidas .titulo-secao h2 {
+
+    color: var(--verde-escuro);
+}
+
+.bebida-destaque {
+
+    max-width: 1000px;
+
+    margin: 0 auto 35px;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-escuro),
+            var(--verde)
+        );
+
+    color: white;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 35px
+        rgba(7,91,44,0.25);
+
+    animation: flutuarLeve 4s
+        ease-in-out infinite;
+}
+
+.bebida-destaque p {
+
+    line-height: 1.8;
+
+    font-size: 1.05rem;
+}
+
+.bebidas .card {
+
+    border-top:
+        4px solid var(--dourado);
+}
+
+.bebidas .card:hover {
+
+    border-top-color:
+        var(--verde);
+}
+
+.bebida-botao {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 10px 20px;
+
+    border-radius: 30px;
+
+    background: var(--verde);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.bebida-botao:hover {
+
+    background: var(--verde-escuro);
+
+    transform: scale(1.05);
+}
+
+/* =========================
+   COMO TRABALHAMOS
+========================= */
+
+.etapas {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 30px;
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.etapa {
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+.numero {
+
+    width: 70px;
+
+    height: 70px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde),
+            var(--verde-escuro)
+        );
+
+    color: white;
+
+    font-size: 1.5rem;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 10px 25px
+        rgba(22,138,69,0.3);
+
+    transition: 0.4s;
+}
+
+.etapa:hover .numero {
+
+    transform:
+        rotate(360deg)
+        scale(1.1);
+}
+
+.etapa h3 {
+
+    margin-bottom: 10px;
+
+    color: var(--verde-escuro);
+}
+
+.etapa p {
+
+    color: var(--cinza);
+
+    line-height: 1.6;
+}
+
+/* =========================
+   EQUIPA
+========================= */
+
+.equipa {
+
+    background:
+        #f0f7f2;
+}
+
+.membros {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+
+    max-width: 1000px;
+
+    margin: auto;
+}
+
+.membro {
+
+    background: white;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    box-shadow: var(--sombra);
+
+    transition: 0.4s;
+
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    animation:
+        entradaMembro
+        0.8s ease forwards;
+}
+
+.membro:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.membro:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.membro:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.membro:nth-child(4) {
+    animation-delay: 0.55s;
+}
+
+.membro:hover {
+
+    transform:
+        translateY(-12px)
+        scale(1.03);
+}
+
+.avatar {
+
+    width: 90px;
+
+    height: 90px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde),
+            var(--dourado)
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 2.5rem;
+
+    animation:
+        pulsar 3s infinite;
+}
+
+.membro h3 {
+
+    margin-top: 18px;
+
+    color: var(--verde-escuro);
+
+    font-size: 1.2rem;
+}
+
+.membro p {
+
+    color: var(--cinza);
+
+    margin-top: 7px;
+}
+
+/* =========================
+   CONTACTOS
+========================= */
+
+.contactos {
+
+    background:
+        linear-gradient(
+            135deg,
+            #075b2c,
+            #168a45
+        );
+
+    color: white;
+
+    text-align: center;
+}
+
+.contactos h2 {
+
+    font-size: 2.5rem;
+
+    margin-bottom: 20px;
+}
+
+.contactos > p {
+
+    max-width: 700px;
+
+    margin: 10px auto;
+
+    line-height: 1.7;
+}
+
+.contacto-box {
+
+    max-width: 700px;
+
+    margin:
+        35px auto 0;
+
+    background:
+        rgba(255,255,255,0.12);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.2);
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.4s;
+}
+
+.contacto-box:hover {
+
+    transform: scale(1.02);
+}
+
+.contacto-item {
+
+    margin: 15px 0;
+
+    font-size: 1.05rem;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+
+    background: #062a16;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+
+    font-size: 0.95rem;
+
+    line-height: 1.8;
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes aparecerTopo {
+
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    html {
-      scroll-behavior: smooth;
+}
+
+@keyframes aparecerHero {
+
+    from {
+        opacity: 0;
+        transform: scale(0.95);
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: #203126;
-      background: white;
-      line-height: 1.6;
-      overflow-x: hidden;
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 
-    /* =========================
-       CABEÇALHO
-    ========================= */
+}
+
+@keyframes tituloEntrada {
+
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes subir {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes flutuar {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-25px);
+    }
+
+}
+
+@keyframes flutuarLeve {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+}
+
+@keyframes balanco {
+
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+}
+
+@keyframes pulsar {
+
+    0%, 100% {
+
+        box-shadow:
+            0 0 0 0
+            rgba(22,138,69,0.3);
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 0 15px
+            rgba(22,138,69,0);
+    }
+
+}
+
+@keyframes entradaMembro {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+/* =========================
+   REVELAÇÃO AO ROLAR
+========================= */
+
+.revelar {
+
+    opacity: 0;
+
+    transform:
+        translateY(60px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.revelar.visivel {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 768px) {
 
     header {
-      background: var(--dark);
-      color: white;
-      padding: 16px 6%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
 
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+        flex-direction: column;
 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    }
-
-    .brand {
-      font-size: 1.45rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-
-      animation: logoEntrada 1s ease;
-    }
-
-    .brand span {
-      color: var(--gold);
+        gap: 15px;
     }
 
     nav {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
+
+        gap: 12px;
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      position: relative;
-      transition: color 0.3s ease;
-    }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0;
-      height: 2px;
-      background: var(--gold);
-      transition: width 0.3s ease;
+        font-size: 0.82rem;
     }
-
-    nav a:hover {
-      color: var(--gold);
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
 
     .hero {
-      min-height: 85vh;
 
-      display: flex;
-      align-items: center;
-
-      padding: 80px 7%;
-
-      background:
-        linear-gradient(
-          100deg,
-          rgba(9,48,27,.9),
-          rgba(9,48,27,.45)
-        ),
-        url("https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg")
-        center/cover;
-
-      color: white;
-
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: rgba(242,193,78,0.15);
-
-      top: -100px;
-      right: -80px;
-
-      animation: flutuar 5s ease-in-out infinite;
-    }
-
-    .hero div {
-      max-width: 680px;
-      position: relative;
-      z-index: 2;
-
-      animation: aparecer 1.2s ease;
+        min-height: 80vh;
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      line-height: 1.08;
-      margin-bottom: 18px;
 
-      animation: subir 1s ease;
+        font-size: 3rem;
     }
 
     .hero p {
-      font-size: 1.15rem;
-      max-width: 580px;
 
-      animation: subir 1.3s ease;
+        font-size: 1rem;
     }
-
-    /* =========================
-       BOTÃO
-    ========================= */
-
-    .btn {
-      display: inline-block;
-
-      background: var(--gold);
-      color: #203126;
-
-      padding: 13px 24px;
-      border-radius: 8px;
-
-      text-decoration: none;
-      font-weight: 800;
-
-      margin-top: 18px;
-
-      transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
-
-      animation: subir 1.5s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      background: #ffd66b;
-    }
-
-    /* =========================
-       SEÇÕES
-    ========================= */
 
     section {
-      padding: 70px 7%;
+
+        padding: 65px 5%;
     }
 
-    .section-title {
-      text-align: center;
-      color: var(--green);
-      font-size: 2rem;
-      margin-bottom: 10px;
+    .titulo-secao h2 {
 
-      animation: aparecer 1s ease;
+        font-size: 2rem;
     }
 
-    .intro {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 30px;
+    .produto-img {
+
+        height: 200px;
     }
 
-    /* =========================
-       PRODUTOS
-    ========================= */
+    .membros {
 
-    .products {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(210px, 1fr));
-
-      gap: 25px;
-      margin-top: 30px;
-    }
-
-    .product {
-      border: 1px solid #e0eadf;
-      border-radius: 15px;
-
-      overflow: hidden;
-
-      background: white;
-
-      box-shadow: 0 5px 18px rgba(18,61,39,0.08);
-
-      transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
-
-      animation: subir 0.8s ease;
-    }
-
-    .product:hover {
-      transform: translateY(-12px) scale(1.02);
-
-      box-shadow:
-        0 18px 35px rgba(18,61,39,0.2);
-    }
-
-    .product img {
-      width: 100%;
-      height: 180px;
-
-      object-fit: cover;
-      display: block;
-
-      transition:
-        transform 0.6s ease,
-        filter 0.6s ease;
-    }
-
-    .product:hover img {
-      transform: scale(1.1);
-      filter: brightness(1.08);
-    }
-
-    .product .inside {
-      padding: 17px;
-    }
-
-    .product h3 {
-      color: var(--dark);
-      margin-bottom: 5px;
-    }
-
-    /* =========================
-       MISSÃO / VISÃO / VALORES
-    ========================= */
-
-    .about {
-      background: var(--light);
-    }
-
-    .three {
-      display: grid;
-
-      grid-template-columns:
-        repeat(auto-fit, minmax(190px, 1fr));
-
-      gap: 20px;
-
-      margin-top: 30px;
-    }
-
-    .info {
-      background: white;
-
-      padding: 22px;
-
-      border-radius: 12px;
-
-      border-left: 5px solid var(--green);
-
-      transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-    }
-
-    .info:hover {
-      transform: translateY(-8px);
-
-      box-shadow:
-        0 12px 25px rgba(18,61,39,0.12);
-    }
-
-    .info h3 {
-      color: var(--green);
-      margin-bottom: 8px;
-    }
-
-    /* =========================
-       EQUIPA
-    ========================= */
-
-    .team {
-      display: grid;
-
-      grid-template-columns:
-        repeat(auto-fit, minmax(220px, 1fr));
-
-      gap: 18px;
-
-      margin-top: 30px;
-    }
-
-    .member {
-      padding: 20px;
-
-      border: 1px solid #e0eadf;
-
-      border-radius: 12px;
-
-      transition:
-        transform 0.3s ease,
-        background 0.3s ease;
-    }
-
-    .member:hover {
-      transform: translateY(-7px);
-      background: var(--light);
-    }
-
-    .member h3 {
-      color: var(--green);
-      margin-bottom: 8px;
-    }
-
-    /* =========================
-       CONTACTOS
-    ========================= */
-
-    .contact {
-      text-align: center;
-
-      background: var(--dark);
-
-      color: white;
-    }
-
-    .contact .section-title {
-      color: white;
-    }
-
-    /* =========================
-       RODAPÉ
-    ========================= */
-
-    footer {
-      background: #0b2c1b;
-      color: #d9e8dc;
-
-      text-align: center;
-
-      padding: 20px;
-    }
-
-    /* =========================
-       ANIMAÇÕES
-    ========================= */
-
-    @keyframes aparecer {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes subir {
-      from {
-        opacity: 0;
-        transform: translateY(35px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes logoEntrada {
-      from {
-        opacity: 0;
-        transform: translateX(-30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes flutuar {
-
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(25px);
-      }
-
-    }
-
-    /* =========================
-       TELEFONE
-    ========================= */
-
-    @media (max-width: 600px) {
-
-      header {
-        justify-content: center;
-      }
-
-      nav {
-        justify-content: center;
-        gap: 12px;
-      }
-
-      nav a {
-        font-size: 0.9rem;
-      }
-
-      .hero {
-        min-height: 75vh;
-        padding: 60px 7%;
-      }
-
-      .hero h1 {
-        font-size: 2.4rem;
-      }
-
-      section {
-        padding: 50px 6%;
-      }
-
-      .products {
         grid-template-columns: 1fr;
-      }
 
+        max-width: 400px;
     }
 
-  </style>
+}
+
+/* =========================
+   ACESSIBILIDADE
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
+
+<!-- =========================
+     CABEÇALHO
+========================= -->
+
 <header>
 
-  <div class="brand">
-    🌱 AGRONEGÓCIO<span>.</span>
-  </div>
+    <div class="logo">
+        🌱 AGRO<span>FUTURO</span>
+    </div>
 
-  <nav>
-    <a href="#inicio">Início</a>
-    <a href="#sobre">Sobre nós</a>
-    <a href="#produtos">Produtos</a>
-    <a href="#equipa">Equipa</a>
-    <a href="#contactos">Contactos</a>
-  </nav>
+    <nav>
+
+        <a href="#inicio">
+            Início
+        </a>
+
+        <a href="#sobre">
+            Sobre
+        </a>
+
+        <a href="#produtos">
+            Produtos
+        </a>
+
+        <a href="#bebidas">
+            🥤 Sumos e Batidos
+        </a>
+
+        <a href="#trabalho">
+            Como trabalhamos
+        </a>
+
+        <a href="#equipa">
+            Equipa
+        </a>
+
+        <a href="#contactos">
+            Contactos
+        </a>
+
+    </nav>
 
 </header>
 
 
-<main>
+<!-- =========================
+     INÍCIO
+========================= -->
 
-  <!-- INÍCIO -->
+<section
+    class="hero"
+    id="inicio"
+>
 
-  <section class="hero" id="inicio">
+    <div class="hero-content">
 
-    <div>
+        <h1>
+            AGRO<span>FUTURO</span>
+        </h1>
 
-      <h1>
-        Da nossa terra para a sua mesa.
-      </h1>
+        <p>
+            Agricultura que produz hoje,
+            pensando no futuro. 🌱
+        </p>
 
-      <p>
-        A AGRONEGÓCIO dedica-se à produção e venda
-        de produtos agrícolas, com compromisso com
-        a qualidade, o trabalho e o desenvolvimento
-        da comunidade.
-      </p>
-
-      <a class="btn" href="#produtos">
-        🌱 Conheça os nossos produtos
-      </a>
+        <a
+            href="#produtos"
+            class="botao"
+        >
+            🌾 Conheça os nossos produtos
+        </a>
 
     </div>
 
-  </section>
+</section>
 
 
-  <!-- SOBRE -->
+<!-- =========================
+     SOBRE
+========================= -->
 
-  <section id="sobre">
+<section
+    id="sobre"
+    class="revelar"
+>
 
-    <h2 class="section-title">
-      Quem somos
-    </h2>
+    <div class="titulo-secao">
 
-    <p class="intro">
-      Somos uma empresa agrícola escolar focada na
-      produção e comercialização de alimentos.
-      Trabalhamos em equipa para oferecer produtos
-      frescos e contribuir para o crescimento da agricultura.
-    </p>
-
-    <div class="three">
-
-      <article class="info">
-
-        <h3>🎯 Missão</h3>
+        <h2>
+            🌱 Sobre a AGROFUTURO
+        </h2>
 
         <p>
-          Produzir e vender alimentos de qualidade,
-          satisfazendo as necessidades dos nossos clientes.
+            A AGROFUTURO é um projeto dedicado
+            à produção, comercialização e
+            divulgação de produtos agrícolas.
+            Além disso, transformamos alguns
+            dos nossos produtos em deliciosos
+            sumos e batidos naturais.
         </p>
-
-      </article>
-
-
-      <article class="info">
-
-        <h3>🌍 Visão</h3>
-
-        <p>
-          Crescer e tornar-nos uma referência na produção
-          e venda de produtos agrícolas.
-        </p>
-
-      </article>
-
-
-      <article class="info">
-
-        <h3>🤝 Valores</h3>
-
-        <p>
-          Responsabilidade, honestidade, união,
-          respeito e dedicação ao trabalho.
-        </p>
-
-      </article>
 
     </div>
 
-  </section>
+
+    <div class="cards">
 
 
-  <!-- PRODUTOS -->
+        <div class="card">
 
-  <section id="produtos">
+            <div class="icone">
+                🎯
+            </div>
 
-    <h2 class="section-title">
-      Os nossos produtos
-    </h2>
+            <h3>
+                Missão
+            </h3>
 
-    <p class="intro">
-      Produzimos e comercializamos produtos agrícolas
-      variados para a alimentação das famílias.
-    </p>
-
-    <div class="products">
-
-
-      <article class="product">
-
-        <img
-          src="https://images.pexels.com/photos/547263/pexels-photo-547263.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Espigas de milho">
-
-        <div class="inside">
-
-          <h3>🌽 Milho</h3>
-
-          <p>
-            Produto essencial na alimentação.
-          </p>
+            <p>
+                Produzir e valorizar produtos
+                agrícolas de qualidade,
+                contribuindo para o
+                desenvolvimento da agricultura.
+            </p>
 
         </div>
 
-      </article>
 
+        <div class="card">
 
-      <article class="product">
+            <div class="icone">
+                🔭
+            </div>
 
-        <img
-          src="https://images.pexels.com/photos/5945755/pexels-photo-5945755.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Mandioca">
+            <h3>
+                Visão
+            </h3>
 
-        <div class="inside">
-
-          <h3>🥔 Mandioca</h3>
-
-          <p>
-            Raiz muito utilizada na alimentação.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <article class="product">
-
-        <img
-          src="https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Feijão">
-
-        <div class="inside">
-
-          <h3>🫘 Feijão</h3>
-
-          <p>
-            Alimento nutritivo e rico em proteínas.
-          </p>
+            <p>
+                Construir um futuro agrícola
+                mais sustentável, moderno
+                e produtivo.
+            </p>
 
         </div>
 
-      </article>
 
+        <div class="card">
 
-      <article class="product">
+            <div class="icone">
+                💚
+            </div>
 
-        <img
-          src="https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Tomates frescos">
+            <h3>
+                Valores
+            </h3>
 
-        <div class="inside">
-
-          <h3>🍅 Tomate</h3>
-
-          <p>
-            Fresco e ideal para várias refeições.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <article class="product">
-
-        <img
-          src="https://images.pexels.com/photos/2294471/pexels-photo-2294471.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Manga fresca">
-
-        <div class="inside">
-
-          <h3>🥭 Manga</h3>
-
-          <p>
-            Fruta saborosa e suculenta.
-          </p>
+            <p>
+                Qualidade, responsabilidade,
+                sustentabilidade, inovação
+                e trabalho em equipa.
+            </p>
 
         </div>
 
-      </article>
-
-
-      <article class="product">
-
-        <img
-          src="https://images.pexels.com/photos/2872755/pexels-photo-2872755.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Bananas frescas">
-
-        <div class="inside">
-
-          <h3>🍌 Banana</h3>
-
-          <p>
-            Fruta prática para toda a família.
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <article class="product">
-
-        <img
-          src="https://images.pexels.com/photos/672101/pexels-photo-672101.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Maçãs frescas">
-
-        <div class="inside">
-
-          <h3>🍎 Maçã</h3>
-
-          <p>
-            Fruta fresca para uma alimentação variada.
-          </p>
-
-        </div>
-
-      </article>
 
     </div>
 
-  </section>
+</section>
 
 
-  <!-- COMO TRABALHAMOS -->
+<!-- =========================
+     PRODUTOS
+========================= -->
 
-  <section class="about">
+<section
+    id="produtos"
+    class="produtos"
+>
 
-    <h2 class="section-title">
-      Como trabalhamos
-    </h2>
+    <div class="titulo-secao revelar">
 
-    <p class="intro">
-      O nosso trabalho passa pela preparação da terra,
-      plantação, cuidados com as culturas, colheita,
-      selecção e venda dos produtos.
-    </p>
-
-  </section>
-
-
-  <!-- EQUIPA -->
-
-  <section id="equipa">
-
-    <h2 class="section-title">
-      A nossa equipa
-    </h2>
-
-    <p class="intro">
-      Cada membro tem uma função importante para o
-      bom funcionamento da AGRONEGÓCIO.
-    </p>
-
-    <div class="team">
-
-      <article class="member">
-
-        <h3>
-          Director-Geral
-        </h3>
+        <h2>
+            🌾 Os nossos produtos
+        </h2>
 
         <p>
-          Coordena a empresa, organiza a equipa
-          e toma decisões.
+            Alguns dos produtos agrícolas
+            que fazem parte do nosso projeto.
+            Também utilizamos algumas destas
+            frutas para preparar sumos e
+            batidos naturais. 🥭🍌🍎🥤
         </p>
-
-      </article>
-
-
-      <article class="member">
-
-        <h3>
-          Director de Produção Agrícola
-        </h3>
-
-        <p>
-          Organiza a plantação, acompanha as culturas
-          e verifica a qualidade.
-        </p>
-
-      </article>
-
-
-      <article class="member">
-
-        <h3>
-          Director Financeiro
-        </h3>
-
-        <p>
-          Controla o dinheiro, regista receitas e
-          despesas e prepara o orçamento.
-        </p>
-
-      </article>
-
-
-      <article class="member">
-
-        <h3>
-          Director Comercial
-        </h3>
-
-        <p>
-          Procura clientes, organiza as vendas
-          e combina os preços.
-        </p>
-
-      </article>
-
-
-      <article class="member">
-
-        <h3>
-          Director de Marketing e Comunicação
-        </h3>
-
-        <p>
-          Divulga a empresa e os seus produtos
-          através de publicidade.
-        </p>
-
-      </article>
 
     </div>
 
-  </section>
+
+    <div class="produtos-grid">
 
 
-  <!-- CONTACTOS -->
+        <!-- MILHO -->
 
-  <section class="contact" id="contactos">
+        <div class="produto">
 
-    <h2 class="section-title">
-      Contacte a AGRONEGÓCIO
+            <img
+                class="produto-img"
+                src="https://images.pexels.com/photos/547263/pexels-photo-547263.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Milho"
+            >
+
+            <div class="produto-info">
+
+                <h3>
+                    🌽 Milho
+                </h3>
+
+                <p>
+                    Produto agrícola essencial
+                    para a alimentação.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOMATE -->
+
+        <div class="produto">
+
+            <img
+                class="produto-img"
+                src="https://images.pexels.com/photos/533280/pexels-photo-533280.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Tomate"
+            >
+
+            <div class="produto-info">
+
+                <h3>
+                    🍅 Tomate
+                </h3>
+
+                <p>
+                    Produto fresco utilizado
+                    em diversas refeições.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- MANDIOCA -->
+
+        <div class="produto">
+
+            <img
+                class="produto-img"
+                src="https://images.pexels.com/photos/5946080/pexels-photo-5946080.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Mandioca"
+            >
+
+            <div class="produto-info">
+
+                <h3>
+                    🥔 Mandioca
+                </h3>
+
+                <p>
+                    Produto importante na
+                    alimentação e agricultura.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FEIJÃO -->
+
+        <div class="produto">
+
+            <img
+                class="produto-img"
+                src="https://images.pexels.com/photos/6546023/pexels-photo-6546023.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Feijão"
+            >
+
+            <div class="produto-info">
+
+                <h3>
+                    🫘 Feijão
+                </h3>
+
+                <p>
+                    Alimento nutritivo e
+                    importante para muitas famílias.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- MANGA -->
+
+        <div class="produto">
+
+            <img
+                class="produto-img"
+                src="https://images.pexels.com/photos/2294471/pexels-photo-2294471.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Manga"
+            >
+
+            <div class="produto-info">
+
+                <h3>
+                    🥭 Manga
+                </h3>
+
+                <p>
+                    Fruta tropical saborosa,
+                    nutritiva e muito apreciada.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- BANANA -->
+
+        <div class="produto">
+
+            <img
+                class="produto-img"
+                src="https://images.pexels.com/photos/2872755/pexels-photo-2872755.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Banana"
+            >
+
+            <div class="produto-info">
+
+                <h3>
+                    🍌 Banana
+                </h3>
+
+                <p>
+                    Fruta nutritiva e muito
+                    utilizada na alimentação.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- MAÇÃ -->
+
+        <div class="produto">
+
+            <img
+                class="produto-img"
+                src="https://images.pexels.com/photos/672101/pexels-photo-672101.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Maçã"
+            >
+
+            <div class="produto-info">
+
+                <h3>
+                    🍎 Maçã
+                </h3>
+
+                <p>
+                    Fruta conhecida pelo seu
+                    sabor e valor nutricional.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SUMOS E BATIDOS
+========================= -->
+
+<section
+    id="bebidas"
+    class="bebidas revelar"
+>
+
+    <div class="titulo-secao">
+
+        <h2>
+            🥤 Sumos e Batidos Naturais
+        </h2>
+
+        <p>
+            Além de produzirmos e comercializarmos
+            produtos agrícolas, também transformamos
+            alguns dos nossos produtos em bebidas
+            naturais, saborosas e nutritivas.
+        </p>
+
+    </div>
+
+
+    <div class="bebida-destaque">
+
+        <p>
+            🌱 Da nossa produção para a sua mesa!
+            Aproveitamos frutas frescas como
+            manga, banana e maçã para preparar
+            deliciosos sumos e batidos naturais.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+
+        <!-- SUMO DE MANGA -->
+
+        <div class="card">
+
+            <div class="icone">
+                🥭
+            </div>
+
+            <h3>
+                Sumo de Manga
+            </h3>
+
+            <p>
+                Preparado com manga fresca,
+                proporcionando uma bebida
+                saborosa e refrescante.
+            </p>
+
+            <a
+                href="#contactos"
+                class="bebida-botao"
+            >
+                Saber mais
+            </a>
+
+        </div>
+
+
+        <!-- BATIDO DE BANANA -->
+
+        <div class="card">
+
+            <div class="icone">
+                🍌
+            </div>
+
+            <h3>
+                Batido de Banana
+            </h3>
+
+            <p>
+                Uma bebida cremosa e nutritiva
+                preparada a partir de banana
+                selecionada.
+            </p>
+
+            <a
+                href="#contactos"
+                class="bebida-botao"
+            >
+                Saber mais
+            </a>
+
+        </div>
+
+
+        <!-- SUMO DE MAÇÃ -->
+
+        <div class="card">
+
+            <div class="icone">
+                🍎
+            </div>
+
+            <h3>
+                Sumo de Maçã
+            </h3>
+
+            <p>
+                Preparado com fruta fresca
+                para oferecer uma bebida
+                saborosa e refrescante.
+            </p>
+
+            <a
+                href="#contactos"
+                class="bebida-botao"
+            >
+                Saber mais
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COMO TRABALHAMOS
+========================= -->
+
+<section
+    id="trabalho"
+    class="revelar"
+>
+
+    <div class="titulo-secao">
+
+        <h2>
+            🚜 Como trabalhamos
+        </h2>
+
+        <p>
+            O nosso trabalho segue várias
+            etapas para garantir organização,
+            qualidade e aproveitamento
+            dos nossos produtos.
+        </p>
+
+    </div>
+
+
+    <div class="etapas">
+
+
+        <!-- ETAPA 1 -->
+
+        <div class="etapa">
+
+            <div class="numero">
+                1
+            </div>
+
+            <h3>
+                🌱 Produção
+            </h3>
+
+            <p>
+                Cultivamos e acompanhamos
+                o desenvolvimento dos
+                produtos agrícolas.
+            </p>
+
+        </div>
+
+
+        <!-- ETAPA 2 -->
+
+        <div class="etapa">
+
+            <div class="numero">
+                2
+            </div>
+
+            <h3>
+                💧 Cuidados
+            </h3>
+
+            <p>
+                Procuramos garantir boas
+                práticas durante o
+                processo agrícola.
+            </p>
+
+        </div>
+
+
+        <!-- ETAPA 3 -->
+
+        <div class="etapa">
+
+            <div class="numero">
+                3
+            </div>
+
+            <h3>
+                📦 Preparação
+            </h3>
+
+            <p>
+                Organizamos os produtos
+                para comercialização e
+                transformação.
+            </p>
+
+        </div>
+
+
+        <!-- ETAPA 4 -->
+
+        <div class="etapa">
+
+            <div class="numero">
+                4
+            </div>
+
+            <h3>
+                🥤 Transformação
+            </h3>
+
+            <p>
+                Transformamos algumas frutas
+                em sumos e batidos naturais.
+            </p>
+
+        </div>
+
+
+        <!-- ETAPA 5 -->
+
+        <div class="etapa">
+
+            <div class="numero">
+                5
+            </div>
+
+            <h3>
+                🚚 Comercialização
+            </h3>
+
+            <p>
+                Levamos os produtos e bebidas
+                até aos nossos clientes.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EQUIPA
+========================= -->
+
+<section
+    id="equipa"
+    class="equipa revelar"
+>
+
+    <div class="titulo-secao">
+
+        <h2>
+            👥 A nossa equipa
+        </h2>
+
+        <p>
+            Conheça os elementos que fazem
+            parte do grupo AGROFUTURO.
+        </p>
+
+    </div>
+
+
+    <div class="membros">
+
+
+        <!-- ELEMENTO 1 -->
+
+        <div class="membro">
+
+            <div class="avatar">
+                👨‍🌾
+            </div>
+
+            <h3>
+                António Zola Vela
+            </h3>
+
+            <p>
+                Elemento do grupo
+            </p>
+
+        </div>
+
+
+        <!-- ELEMENTO 2 -->
+
+        <div class="membro">
+
+            <div class="avatar">
+                👨‍🌾
+            </div>
+
+            <h3>
+                Carlos Domingos
+            </h3>
+
+            <p>
+                Elemento do grupo
+            </p>
+
+        </div>
+
+
+        <!-- ELEMENTO 3 -->
+
+        <div class="membro">
+
+            <div class="avatar">
+                👨‍🌾
+            </div>
+
+            <h3>
+                Francisco Cardoso
+            </h3>
+
+            <p>
+                Elemento do grupo
+            </p>
+
+        </div>
+
+
+        <!-- ELEMENTO 4 -->
+
+        <div class="membro">
+
+            <div class="avatar">
+                👩‍🌾
+            </div>
+
+            <h3>
+                Filomena Pinto Ingo
+            </h3>
+
+            <p>
+                Elemento do grupo
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACTOS
+========================= -->
+
+<section
+    id="contactos"
+    class="contactos"
+>
+
+    <h2>
+        📞 Contacte a AGROFUTURO
     </h2>
 
     <p>
-      Para informações sobre os nossos produtos
-      e vendas, entre em contacto com a nossa equipa.
+        Para mais informações sobre o nosso
+        projeto, produtos, sumos e batidos,
+        entre em contacto connosco.
     </p>
 
-    <p>
 
-      <strong>Telefone:</strong>
-      [955371213/+244 926 648 070]
+    <div class="contacto-box">
 
-      &nbsp; | &nbsp;
 
-      <strong>Email:</strong>
-      [Grupoagronegocio@gmail.com]
+        <div class="contacto-item">
 
-    </p>
+            📱
+            <strong>
+                Telefone:
+            </strong>
 
-    <p>
+            [955371213/987654321]
 
-      <small>
-        Este é um projecto escolar.
-        Os contactos podem ser preenchidos pela equipa.
-      </small>
+        </div>
 
-    </p>
 
-  </section>
+        <div class="contacto-item">
 
-</main>
+            📧
+            <strong>
+                Email:
+            </strong>
 
+            [grupoagrofuturo@gmail.com]
+
+        </div>
+
+
+        <div class="contacto-item">
+
+            📍
+            <strong>
+                Localização:
+            </strong>
+
+            Angola
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RODAPÉ
+========================= -->
 
 <footer>
 
-  © 2026 AGRONEGÓCIO —
-  Produção e venda de produtos agrícolas 🌱
+    <p>
+        © 2026 AGROFUTURO —
+        Projeto agrícola.
+    </p>
+
+    <p>
+        🌱 Produzir hoje.
+        Construir o futuro.
+    </p>
+
+    <p>
+        🥤 Do campo para a mesa.
+    </p>
 
 </footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* =========================
+   ANIMAÇÃO DAS SECÇÕES
+========================= */
+
+const elementos =
+    document.querySelectorAll(".revelar");
+
+const observer =
+    new IntersectionObserver(
+
+        (entradas) => {
+
+            entradas.forEach(
+                (entrada) => {
+
+                    if (
+                        entrada.isIntersecting
+                    ) {
+
+                        entrada.target
+                            .classList
+                            .add("visivel");
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+elementos.forEach(
+    (elemento) => {
+
+        observer.observe(elemento);
+
+    }
+);
+
+
+/* =========================
+   ANIMAÇÃO DOS PRODUTOS
+========================= */
+
+const produtos =
+    document.querySelectorAll(".produto");
+
+const observerProdutos =
+    new IntersectionObserver(
+
+        (entradas) => {
+
+            entradas.forEach(
+                (entrada, index) => {
+
+                    if (
+                        entrada.isIntersecting
+                    ) {
+
+                        setTimeout(
+
+                            () => {
+
+                                entrada.target
+                                    .classList
+                                    .add("mostrar");
+
+                            },
+
+                            index * 120
+
+                        );
+
+                        observerProdutos
+                            .unobserve(
+                                entrada.target
+                            );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+produtos.forEach(
+    (produto) => {
+
+        observerProdutos
+            .observe(produto);
+
+    }
+);
+
+
+/* =========================
+   MOVIMENTO DO FUNDO
+========================= */
+
+const hero =
+    document.querySelector(".hero");
+
+hero.addEventListener(
+    "mousemove",
+    (evento) => {
+
+        const x =
+            (
+                evento.clientX /
+                window.innerWidth
+                - 0.5
+            ) * 10;
+
+        const y =
+            (
+                evento.clientY /
+                window.innerHeight
+                - 0.5
+            ) * 10;
+
+        hero.style.backgroundPosition =
+            `calc(50% + ${x}px)
+             calc(50% + ${y}px)`;
+
+    }
+);
+
+
+/* =========================
+   MENSAGEM NO CONSOLE
+========================= */
+
+console.log(
+    "🌱 AGROFUTURO carregado com sucesso!"
+);
+
+console.log(
+    "🥤 Sumos e batidos naturais disponíveis!"
+);
+
+</script>
 
 </body>
 </html>
